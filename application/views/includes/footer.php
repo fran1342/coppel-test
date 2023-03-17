@@ -1,11 +1,11 @@
  <!-- Footer -->
  <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
-                    </div>
-                </div>
-            </footer>
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Prueba coppel</span>
+        </div>
+    </div>
+</footer>
             <!-- End of Footer -->
 
         </div>
@@ -67,5 +67,5 @@
 
     <!-- Toast -->
     <script src="<?=base_url('resources/plugins/cute-alert-master/cute-alert.js');?>"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.js"></script>
 </html>

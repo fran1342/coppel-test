@@ -1,18 +1,17 @@
 <script>
-    $(function(){
-        cargar_contenido();
+ 
+$(function(){
+    $(document).on('click','#btn_nuevo_producto',function(){
+        $.ajax({
+            url : "<?=base_url('home/abrir_formulario')?>",
+            method : "get",
+            success : function(respuesta){
+                $(document).find('#contenido_modal').empty().append(respuesta);
+            }
+        });
+    });
 
-        $(document).on('click','#btn_nuevo_producto',function(){
-           $.ajax({
-                url : "<?=base_url('productos/abrir_formulario')?>",
-                method : "get",
-                success : function(respuesta){
-                    $(document).find('#contenido_modal').empty().append(respuesta);
-                }
-           });
-       });
-
-       $(document).on('submit','#form_productos',function(event){
+    $(document).on('submit','#form_prueba',function(event){
             event.preventDefault();
 
             $(this).find('input').each(function(elemento){
@@ -21,12 +20,11 @@
             });
             var data = $(this).serialize();
             $.ajax({
-                url : "<?=base_url('productos/procesar_formulario')?>",
+                url : "<?=base_url('home/procesar_formulario')?>",
                 method : "post",
                 data : data,
                 dataType : "json",
                 success : function(respuesta){
-                    console.log(respuesta.mensaje);
                     if (respuesta.estatus == "incorrecto") {
                         if (respuesta.errores) {
                             $.each(respuesta.errores,function(variable,value){
@@ -35,7 +33,6 @@
                             });
                         } else {
                             $(document).find('#modal_productos').modal('hide');
-                            cargar_contenido();
                             var toast = cuteAlert({
                                 type : "danger",
                                 img : "img/error.svg",
@@ -47,7 +44,6 @@
                         }
                     } else if(respuesta.estatus == "correcto"){
                         $(document).find('#modal_productos').modal('hide');
-                        cargar_contenido();
                         var toast = cuteAlert({
                             type : "success",
                             img : "img/success.svg",
@@ -61,34 +57,21 @@
            });
         });
 
-        $(document).on('click', '.btn_operacion', function(){
-            var codigo_producto = $(this).attr('data-codigo');
-            var accion = $(this).attr('data-opt');
-            $.ajax({
-                url : "<?=base_url('productos/abrir_formulario?codigo_producto=')?>" + codigo_producto+"&accion="+accion,
-                method : "get",
-                success : function(respuesta){
-                    $(document).find('#contenido_modal').empty().append(respuesta);
-                    $(document).find('#modal_productos').modal('show');
-                }
-            });
-       });
-    
-    });
-
-    function cargar_contenido(){
+        $(document).on('click','#btn_consulta_producto',function(){
         $.ajax({
-                url : "<?=base_url('productos/mostrarContenido')?>",
-                method : "get",
-                success : function(respuesta){
-                    $(document).find('#registro_contenido').empty().append(respuesta);
-
-                    setTimeout(function(){
-                        $(document).find('#tabla_productos').DataTable({
-                            responsive : true
-                        });
-                    }, 100);
-                }
+            url : "<?=base_url('home/abrir_modal_informacion')?>",
+            method : "get",
+            success : function(respuesta){
+                $(document).find('#contenido_ver_modal').empty().append(respuesta);
+            }
         });
-    }
+    });
+});
+
+function validaNumericos(event) {
+    if(event.charCode >= 48 && event.charCode <= 57){
+      return true;
+     }
+     return false;        
+}
 </script>

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Veterinaria</title>
+    <title>Prueba coppel</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?=base_url('resources/plugins/fontawesome-free/css/all.min.css');?>" rel="stylesheet" type="text/css">
@@ -22,5 +22,6 @@
     <link rel="stylesheet" href="<?=base_url('resources/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css');?>">
     <link rel="stylesheet" href="<?=base_url('resources/plugins/datatables-responsive/css/responsive.bootstrap4.min.css');?>">
     <link rel="stylesheet" href="<?=base_url('resources/plugins/cute-alert-master/style.css');?>" >
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css">
 
 </head>
